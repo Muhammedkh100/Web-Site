@@ -1,0 +1,801 @@
+/* Genel Ayarlar ve Fontlar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth; /* Yumuşak kaydırma */
+    /* Internet Explorer ve Edge için kaydırma çubuğunu gizle */
+    -ms-overflow-style: none;  
+    /* Firefox için kaydırma çubuğunu gizle */
+    scrollbar-width: none;  
+}
+
+/* Chrome, Safari ve Opera için kaydırma çubuğunu gizle */
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #0d0d0d; /* Genel arka plan koyu tonlarda */
+}
+
+/* Navigasyon İlk Hali */
+.nav-bar {
+    position: fixed;
+    top: 10px; /* Başlangıçtaki boşluk */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 98%;
+    height: 80px;
+    background: rgba(60, 20, 28, 0.98);
+    backdrop-filter: blur(10px);
+    border-radius: 7px; /* Kenarlar oval */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 1000;
+    transition: all 0.2s ease-in-out; /* Geçişin yumuşak olması için */
+}
+
+/* Kaydırınca Devreye Girecek Stil */
+.nav-bar.scrolled {
+    top: 0;           /* Boşluğu sıfırla */
+    width: 100%;      /* Tam genişlik yap */
+    border-radius: 0; /* Köşeleri düzelt */
+    background: rgba(60, 20, 28, 0.98); /* Biraz daha koyulaştırabilirsin */
+    padding: 0 50px;  /* Genişleyince içeriği biraz daha aç */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 5px; /* Alt çizgi için boşluk */
+    transition: 0.3s ease-out
+}
+
+.nav-links a:hover {
+    text-shadow: 2px 1px 15px rgba(255, 255, 255, 0.9);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    
+    transition: width 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    
+}
+
+/* Hero Alanı (Video ve Başlık) */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 1; /* Video en altta */
+    object-fit: cover;
+}
+
+/* Video üzerine karartma */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Hafif karartma */
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3; /* İçerik önde */
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 10px;
+    text-shadow: 1px 1px 15px rgba(255, 255, 255, 0.6);
+    margin-bottom: 30px;
+}
+
+.explore-btn {
+    display: inline-block;
+    background-color: #602d36;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+    background-color: #8a3f4e;
+}
+
+/* Genel Bölüm Stilleri */
+section {
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+    color: white; /* Bölüm metin renkleri */
+    overflow: hidden; /* İçerik dışarı taşmasın */
+}
+
+section h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Hakkımızda Bölümü */
+.about-section {
+    background-image: url('https://uploads.onecompiler.io/447r758kc/447r3yu8g/pexels-photo-12808913.jpeg'); /* İlk imag2'nin görseli */
+    background-attachment: fixed; /* Parallax etkisi */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-section .section-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.about-section .section-content {
+    max-width: 800px;
+    z-index: 2;
+    padding: 30px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.5);
+}
+
+.about-section p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.learn-more-btn {
+    display: inline-block;
+    background-color: white;
+    color: #602d36;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #eee;
+    color: #4a232b;
+}
+
+/* Modeller Bölümü */
+.models-section {
+    background-color: #1a1a1a; /* Koyu arka plan */
+    padding: 100px 5%;
+    color: white;
+}
+
+.model-gallery {
+    display: flex;
+    flex-wrap: wrap; /* Küçük ekranlarda alta geçsin */
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.model-card {
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.model-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.model-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #602d36;
+}
+
+.model-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.8rem;
+    margin: 20px 0 10px;
+    color: #fff;
+}
+
+.model-card p {
+    font-size: 0.95rem;
+    padding: 0 20px 20px;
+    color: #ccc;
+}
+
+.view-model-btn {
+    display: inline-block;
+    background-color: #602d36;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 0 0 10px 10px;
+    text-decoration: none;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.view-model-btn:hover {
+    background-color: #8a3f4e;
+}
+
+
+/* Haberler Bölümü */
+.news-section {
+    background-image: url('https://uploads.onecompiler.io/447r758kc/447r3yu8g/Jag_F-PACE_SVR_Performance_Film_H264_4K_021220.jpg'); /* imag3'ün görseli */
+    background-attachment: fixed; /* Parallax etkisi */
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.news-section .section-overlay {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.news-section .section-content {
+    max-width: 900px;
+    z-index: 2;
+    padding: 40px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.news-item {
+    background-color: #1f1f1f;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+}
+
+.news-item h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.news-item p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.read-more-btn {
+    display: inline-block;
+    color: #602d36;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 2px solid #602d36;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+    color: #8a3f4e;
+    border-bottom-color: #8a3f4e;
+}
+
+/* Footer Stilleri */
+.site-footer {
+    background-color: #000;
+    color: #ccc;
+    padding: 60px 5% 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #602d36;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.footer-section p, .footer-section ul {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 20px;
+    margin-top: 30px;
+    color: #888;
+}
+
+/* Medya Sorguları (Duyarlı Tasarım) */
+@media (max-width: 992px) {
+    .nav-links {
+        gap: 25px;
+    }
+    .hero-content h1 {
+        font-size: 4rem;
+        letter-spacing: 7px;
+    }
+    section h2 {
+        font-size: 2.8rem;
+    }
+    .model-card {
+        width: 45%;
+    }
+    .footer-section {
+        text-align: center;
+    }
+    .footer-section h3 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        height: 70px;
+        padding: 0 20px;
+        border-radius: 10px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        background: rgba(96, 45, 54, 0.95);
+    }
+    .nav-links {
+        display: none; /* Mobilde hamburger menü ile açılabilir */
+        flex-direction: column;
+        width: 100%;
+        background: rgba(96, 45, 54, 0.95);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 10px 0;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+        letter-spacing: 5px;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    section {
+        padding: 80px 3%;
+    }
+    section h2 {
+        font-size: 2.2rem;
+    }
+    .about-section .section-content, .news-section .section-content {
+        padding: 20px;
+    }
+    .about-section p {
+        font-size: 1rem;
+    }
+    .model-card {
+        width: 90%;
+    }
+    .news-item {
+        min-width: unset;
+        width: 100%;
+    }
+    .footer-section {
+        min-width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+        letter-spacing: 3px;
+    }
+    .nav-bar {
+        padding: 0 15px;
+    }
+    .logo img {
+        height: 40px;
+    }
+}
+
+/* Genel Overlay Stili */
+.section-overlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Varsayılan karartma */
+    z-index: 1;
+}
+
+/* Metinlerin overlay'in üstünde kalması için */
+.section-content {
+    position: relative;
+    z-index: 2;
+}
+/* About Sayfası Özel Stilleri */
+.about-page {
+    background-color: #0a0a0a;
+    color: #fff;
+}
+
+/* About Hero Alanı */
+.about-hero {
+    height: 70vh;
+    background-image: url('photo-1696390141251-a638effa875b.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Paralaks etkisi */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), #0a0a0a);
+}
+
+.hero-content-about {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-content-about h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    letter-spacing: 12px;
+    margin-top: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    color: #aa2a42;
+    font-weight: 700;
+}
+
+/* Story Bölümü */
+.story-section {
+    padding: 100px 10%;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.story-text h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #602d36;
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 5px;
+    filter: grayscale(30%);
+    transition: 0.5s;
+}
+
+.story-image img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.02);
+}
+
+/* Değerler Bölümü (Grid) */
+.values-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 80px 10%;
+    background-color: #111;
+}
+
+.value-card {
+    text-align: center;
+    padding: 40px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.value-card:hover {
+    background: #0d0d0d;
+    border-color: #602d36;
+}
+
+.value-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.value-card p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Footer Ekstralar */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #602d36;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.back-link:hover {
+    color: #fff;
+}
+
+/* Mobil Uyumluluk */
+@media (max-width: 768px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .values-section {
+        flex-direction: column;
+    }
+    .hero-content-about h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Model Detay Sayfası Stilleri */
+.model-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Her modele özel arka plan (Resim linklerini değiştirebilirsin) */
+.specs-section {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px 10%;
+    background-color: #111;
+    color: white;
+    border-bottom: 1px solid #333;
+}
+
+.spec-box h3 {
+    color: #602d36;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
+}
+
+.model-description {
+    padding: 80px 15%;
+    text-align: center;
+    color: #ccc;
+}
+
+.model-description h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.full-width-img {
+    width: 70%;
+    border-radius: 10px;
+    margin-top: 40px;
+}
+/* Model Detay Hero Alanı */
+.model-hero {
+    position: relative;
+    height: 100vh; /* Sayfanın %75'ini kaplar */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Videonun Arka Plan Ayarları */
+.model-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    object-fit: cover; /* Videonun esnemesini engeller */
+}
+
+/* Video Üzerindeki Karartma Katmanı */
+.model-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+    z-index: 2;
+}
+
+/* İçeriklerin Videonun Önünde Kalması */
+.model-hero .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+}
+
+.model-badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #602d36;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.model-hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    letter-spacing: 15px;
+    margin: 0;
+}
